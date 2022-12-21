@@ -4,6 +4,28 @@ import Image from 'next/image'
 import Login from './Login'
 
 export default function Header(){
+  const [theme, setTheme] = useState(null);
+
+  useEffect(() => {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      setTheme('dark');
+    }
+    else {
+      setTheme('light');
+    }
+  }, [])
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } 
+    else{
+      document.documentElement.classList.remove("dark")
+    }
+  }, [theme]);
+  const handleThemeSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <header className="flex bg-slate-200 px-10 py-2">
       <Link href={`/`} className="flex-grow flex items-center">
