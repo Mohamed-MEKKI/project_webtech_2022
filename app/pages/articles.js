@@ -61,7 +61,7 @@ export default function Articles({
             <Link rel="preconnect" href="https://rsms.me/"> </Link>
             <Link rel="stylesheet" href="https://rsms.me/inter/inter.css"> </Link>
              <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow my-10">
-             <h2 className="font-bold mb-1"><Link href={`/articles/${article.slug}`}>{article.title}</Link></h2>
+             <h2 className="font-bold mb-1">{article.title}</h2>
              <p className="tracking-widest text-left text-black md:text-lg dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">{article.message}
             </p>
         <div className="inline-flex items-center rounded-md shadow-sm">
@@ -74,6 +74,7 @@ export default function Articles({
                 <span>Edit</span>
             </button>
             </Link>
+            <Link href={`/articles/${article.slug}`}>
             <button className="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border-y border-slate-200 font-medium px-4 py-2 inline-flex space-x-1 items-center">
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
@@ -83,6 +84,7 @@ export default function Articles({
                 </span>
                 <span>View</span>
             </button>
+            </Link>
             <button className="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border border-slate-200 rounded-r-lg font-medium px-4 py-2 inline-flex space-x-1 items-center "  onClick={makeDelete}>
                 <span>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
