@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/Layout.js'
+import { supabase } from './api/supabase'
 
-export default function Home() {
+
+export default function Home({articles}) {
   return (
     <Layout>
       <Head>
@@ -51,6 +53,35 @@ export default function Home() {
         </div>
       </div>
     </div>
+    <ul>
+        {articles.map( article => (
+          <li key={article.slug} className="my-5">
+            <Link rel="preconnect" href="https://rsms.me/"> </Link>
+            <Link rel="stylesheet" href="https://rsms.me/inter/inter.css"> </Link>
+             <div className="max-w-xl mx-auto p-6 bg-white rounded-lg shadow my-10">
+             <h2 className="font-bold mb-1">{article.title}</h2>
+             <p className="tracking-widest text-left text-black md:text-lg dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">{article.message}
+            </p>
+        <div className="inline-flex items-center rounded-md shadow-sm">
+           
+            <Link href={`/articles/${article.slug}`}>
+            <button className="text-slate-800 hover:text-blue-600 text-sm bg-white hover:bg-slate-100 border-y border-slate-200 font-medium px-4 py-2 inline-flex space-x-1 items-center">
+                <span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>                      
+                </span>
+                <span>View</span>
+            </button>
+            </Link>
+            
+         </div>
+        
+       </div>
+          </li>
+        ))}
+      </ul>
     
 <div className="w-full bg-white border rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
     <div className="sm:hidden">
@@ -75,5 +106,19 @@ export default function Home() {
     </div>
     </Layout>
   )
+}
+
+
+export async function getStaticProps(ctx) {
+  let articles = []
+  let { data, error, status } = await supabase
+    .from('articles')
+    .select(`id, slug, message, title`)
+  if (!error) articles = data // handle errors
+  return {
+    props: {
+      articles: articles
+    }
+  };
 }
 
