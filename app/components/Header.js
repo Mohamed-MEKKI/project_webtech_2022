@@ -2,6 +2,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Login from './Login'
+import { useEffect,useState } from 'react'
 
 export default function Header(){
   const [theme, setTheme] = useState(null);
