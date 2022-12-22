@@ -1,0 +1,3 @@
+#files and folders to ignore while copying tto image file
+.next
+node_modules
