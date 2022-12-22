@@ -33,7 +33,7 @@
 
 ## Authors
 
-*name, email, ...*
+*Mohamed MEKKI, mohamed.mekki@edu.ece.fr, ING4 S.I Gr03*
 
 ## Tasks
   
@@ -57,7 +57,7 @@
 * Login and profile page   
   *place your graduation and comments*
 * New articles creation   
-  *place your graduation and comments*
+  I set a new page named by 
 * New comment creation   
   *place your graduation and comments*
 * Resource access control   
@@ -65,7 +65,7 @@
 * Article modification   
   *place your graduation and comments*
 * Article removal   
-  *place your graduation and comments*
+  added a 
 * Comment modification   
   *place your graduation and comments*
 * Comment removal   
@@ -79,9 +79,10 @@
 * Light/dark theme   
   *place your graduation and comments*
 * Accent color selection   
-  *place your graduation and comments*
+  Created four buttons that defines 4 colors: red,yellow,purple,blue in the Layout component page
+  and that allows us to switch color each time
 
 ## Bonus
 
-* Task title   
+* DockerFile and Dockerignore  
   *place your graduation and comments*
