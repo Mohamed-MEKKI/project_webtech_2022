@@ -269,9 +269,6 @@ export default function Header(){
           </Popover>
         </Popover.Group>
         <div className="hidden items-center justify-end md:flex md:flex-1 lg:w-0">
-          <a href="\profile" className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
-            my profile
-          </a>
           <button
             className="rounded px-3 py-2 text-white bg-slate-500 hover:bg-blue-500"
             onClick={onClickLogout}
@@ -282,7 +279,7 @@ export default function Header(){
             href="\login"
             className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
           >
-            Sign ip
+            Sign in
           </a>
           
         </div>
