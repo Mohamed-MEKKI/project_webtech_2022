@@ -2,8 +2,9 @@ import Link from 'next/link'
 import Login from './Login'
 import onClickLogout from '/pages/profile'
 import { useEffect,useState } from 'react';
-import { Fragment } from 'react'
+import { Fragment, useContext } from 'react'
 import { Popover, Transition } from '@headlessui/react'
+import ThemeContext from './ThemeContext';
 import {
   ArrowPathIcon,
   Bars3Icon,
@@ -76,30 +77,25 @@ function classNames(...classNamees) {
   return classNamees.filter(Boolean).join(' ')
 }
 export default function Header(){
-  const [theme, setTheme] = useState(null);
   const [enabled, setEnabled] = useState(false)
+  const { theme, onToggleTheme } = useContext(ThemeContext);
 
-  
-
-  useEffect(() => {
-    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-      setTheme('dark');
-    }
-    else {
-      setTheme('light');
-    }
-  }, [])
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } 
-    else{
-      document.documentElement.classList.remove("dark")
-    }
-  }, [theme]);
-  const handleThemeSwitch = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
+  // useEffect(() => {
+  //   if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+  //     setTheme('dark');
+  //   }
+  //   else {
+  //     setTheme('light');
+  //   }
+  // }, [])
+  // useEffect(() => {
+  //   if (theme === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //   } 
+  //   else{
+  //     document.documentElement.classList.remove("dark")
+  //   }
+  // }, [theme]);
 
 
   return (
@@ -189,7 +185,7 @@ export default function Header(){
             )}
           </Popover>
 
-          <button  onClick={handleThemeSwitch} className="text-base font-medium text-gray-500 hover:text-gray-900">
+          <button  onClick={onToggleTheme} className="text-base font-medium text-gray-500 hover:text-gray-900">
             Dark Mode
         </button>
           <Link href="/about" className="text-base font-medium text-gray-500 hover:text-gray-900">
