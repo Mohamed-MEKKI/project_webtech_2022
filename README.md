@@ -5,42 +5,41 @@
 
 ## Production 
 
-- Vercel URL: https://...
-- Supabase project URL: https://app.supabase.com/project/...
-
+- Vercel URL: 
+- Supabase project URL: 
 ## Usage
 
 *how to start and use the application, run the tests, ...*
 
 * Clone this repository, from your local machine:
   ```
-  git clone ...
-  cd ...
+  git clone https://github.com/Mohamed-MEKKI/project_webtech_2022.git
+  cd app
   ```
 * Start the the application
   ```bash
   cd app
   # Install dependencies (use yarn or npm)
   npm install
-  npm run build
-  npm start
+  npm run dev
   ```
 * Start Supabase
   ```bash
   cd supabase
-  docker compose up ...
+  docker-compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up
   ```
 
 ## Authors
 
-*Mohamed MEKKI, mohamed.mekki@edu.ece.fr, ING4 S.I Gr03*
+*Mohamed MEKKI, mohamed.mekki@edu.ece.fr, ING4 S.I Gr03*\n
+*Thanthai UDCHARCHON, thanthai.udcharchon@edu.ece.fr, ING4 S.I Gr03*
 
 ## Tasks
   
 **Project management:**
 
 * Naming convention   
-  *place your graduation and comments*
+  PascalCase is used for components and camelCase is used for pages and variable, the rest (such as asset etc.) is in snake_case
 * Project structure   
   *place your graduation and comments*
 * Git   
