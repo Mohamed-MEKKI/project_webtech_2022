@@ -5,11 +5,13 @@ import Head from 'next/head'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import Layout from '../components/Layout.js'
 import UserContext from '../components/UserContext'
+import ThemeContext from '../components/ThemeContext.js';
 
 export default function Contact() {
   const { user } = useContext(UserContext)
   const router = useRouter()
   const supabaseClient = useSupabaseClient()
+  const { theme } = useContext(ThemeContext);
   if(user) router.push('/profile')
   return (
     <Layout>
@@ -22,6 +24,7 @@ export default function Contact() {
         supabaseClient={supabaseClient}
         appearance={{ theme: ThemeSupa }}
         providers={['github']}
+        theme={theme}
        />
     </Layout>
   )
