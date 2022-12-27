@@ -70,7 +70,9 @@
 * Comment removal   
   *place your graduation and comments*
 * Account settings   
-  *place your graduation and comments*
+  we created an account component imported from supabase 
+  
+ 
 * WYSIWYG integration   
   *place your graduation and comments*
 * Gravatar integration   
