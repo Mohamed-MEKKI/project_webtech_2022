@@ -56,8 +56,23 @@ _how to start and use the application, run the tests, ..._
     tailwind.config.js  
     tsconfig.json  
     README.md  
+  supabase/
+  Readme.md
+  licence
 * Git   
   **Git is used to keep up with the version from remote and local repository. Conventional commit is used for every commit**
+  used branches for 
+  main:
+    The default branch 
+components:
+    Description of components modifications ,including color switch and Dark mode
+articles:
+    Description of article creation,delete and modify branch
+comments:
+    Description of comments creation,delete and modify branch
+css-color-switch-dark-mode:
+    Description of dark mode and color switching branch
+
 * Code quality   
   **Indent and folder management is established for easily readable code**
 * Design, UX, and content   
