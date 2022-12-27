@@ -50,9 +50,9 @@
 * Git   
   We created 5 branches to push the code:
   Main branch contains the main application and the index page
-  Components all page components 
+  Components all page components,dark mode and color switch
   Articles branch contains the 
-  Comments
+  Comments contains the showComments page import
   Dark-mode
 * Code quality   
   *place your graduation and comments*
@@ -85,12 +85,28 @@
   };
 ````
 * Resource access control   
-  *place your graduation and comments*
+  RLS 
+  inserting articles 
 * Article modification   
 added a button 
   *place your graduation and comments*
 * Article removal   
   added a button for
+  ```
+  const makeDelete = async () => {
+    const{id}=useParams();
+    const { error,data } = await supabase
+            .from('articles')
+            .delete()
+            .eq('id',params.id)
+   if (error){
+     console.log(error)
+   }
+   if (data){
+     console.log(data);
+   }
+}
+```
 * Comment modification   
   const onChangeEditComment = (event: ChangeEvent<HTMLInputElement>) => {
     const payload = event.target.value;
