@@ -41,49 +41,151 @@
 * Naming convention   
   PascalCase is used for components and camelCase is used for pages and variable, the rest (such as asset etc.) is in snake_case
 * Project structure   
-  *place your graduation and comments*
+  the repository contains 2 main folders:
+  App/
+  Supabase/
+  
+  App/ contains the main application with its dockerfile. 
+  Supabase/ contains the the main configurations of supabase storage.
 * Git   
-  *place your graduation and comments*
+  We created 5 branches to push the code:
+  Main branch contains the main application and the index page
+  Components all page components 
+  Articles branch contains the 
+  Comments
+  Dark-mode
 * Code quality   
   *place your graduation and comments*
 * Design, UX, and content   
-  *place your graduation and comments*
+  for 
 
 **Application development:**
 
 * Home page   
-  *place your graduation and comments*
+  the index.js page is designated to show the home page
+  it contains the hook sentence for our app users and it publich the latest articles 
+  without the possibility to delete it or modifying it.
+  
 * Login and profile page   
-  *place your graduation and comments*
+  we used the supabase template to sign in or create users:
+  once the user is logged in they are going to be transferred to update user page 
 * New articles creation   
-  I set a new page named by 
+  We implemented a an article creator page in the name of artcr.js where it shows a form
+  where we could input Content,Title,content,Slug and then a button to submitt the form
+  in a supabase table.
 * New comment creation   
-  *place your graduation and comments*
+````
+  const getCommentList = async () => {
+    const { data, error } = await supabase.from("comments").select("*");
+    if (!error && data) {
+      setCommentList(data);
+    } else {
+      setCommentList([]);
+    }
+  };
+````
 * Resource access control   
   *place your graduation and comments*
 * Article modification   
+added a button 
   *place your graduation and comments*
 * Article removal   
-  added a 
+  added a button for
 * Comment modification   
-  *place your graduation and comments*
+  const onChangeEditComment = (event: ChangeEvent<HTMLInputElement>) => {
+    const payload = event.target.value;
+    setEditComment({ ...editComment, payload });
+  };
+
+  const confirmEdit = () => {
+    window.alert("Confirm edit comment");
+  };
 * Comment removal   
-  *place your graduation and comments*
+````
+  const confirmDelete = async (id: string) => {
+    const ok = window.confirm("Delete comment?");
+    if (ok) {
+      const { data, error } = await supabase.from("comments").delete().match({ id });
+      if (!error && data) {
+        window.alert("Deleted Comment :)");
+      } else {
+        window.alert(error?.message);
+      }
+    }
+  };
+  ````
 * Account settings   
-  we created an account component imported from supabase 
+  we created an account component imported from supabase called 
+  Account page where user could update its information after logiing in.
   
  
 * WYSIWYG integration   
   *place your graduation and comments*
 * Gravatar integration   
-  *place your graduation and comments*
+  We created a component called avatar linked directly to the subscribed user,
+  <Avatar
+      uid={user.id}
+      url={avatar_url}
+      size={150}
+      onUpload={(url) => {
+        setAvatarUrl(url)
+        updateProfile({ username, website, avatar_url: url })
+      }}
+    />
+    User could import its photo and could use it in different states
 * Light/dark theme   
   *place your graduation and comments*
+  ```
+  const [theme, setTheme] = useState(null);
+
+  useEffect(() => {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      setTheme('dark');
+    }
+    else {
+      setTheme('light');
+    }
+  }, [])
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } 
+    else{
+      document.documentElement.classList.remove("dark")
+    }
+  }, [theme]);
+  const handleThemeSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+  ```
 * Accent color selection   
   Created four buttons that defines 4 colors: red,yellow,purple,blue in the Layout component page
   and that allows us to switch color each time
+  ```
+  const [color, setColor] = useState('white');
+  const handleColorChange = (event) => {
+    setColor(event.target.value);
+  }
+  ```
+  
+  
+      <div className={`bg-${color}-500 `} >
+
 
 ## Bonus
 
 * DockerFile and Dockerignore  
-  *place your graduation and comments*
+  We created a dockerfile with this template
+  ````
+  FROM node:16-alpine
+  RUN mkdir -p /usr/app/
+  WORKDIR /usr/app
+
+  COPY ./ ./
+
+  RUN npm install
+  RUN run build
+
+  EXPOSE 3000
+  CMD ["npm","start"]
+  ````
