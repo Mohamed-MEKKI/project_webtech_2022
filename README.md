@@ -63,22 +63,22 @@ _how to start and use the application, run the tests, ..._
 * Git   
   **Git is used to keep up with the version from remote and local repository. Conventional commit is used for every commit**
   used branches :
-  main:
-    The default branch 
-components:
-    Description of components modifications ,including color switch and Dark mode
-articles:
-    Description of article creation,delete and modify branch
-comments:
-    Description of comments creation,delete and modify branch
-css-color-switch-dark-mode:
-    Description of dark mode and color switching branch
+  main:<br>
+    The default branch <br>
+components:<br>
+    Description of components modifications ,including color switch and Dark mode<br>
+articles:<br>
+    Description of article creation,delete and modify branch<br>
+comments:<br>
+    Description of comments creation,delete and modify branch<br>
+css-color-switch-dark-mode:<br>
+    Description of dark mode and color switching branch<br>
 
 * Code quality   
   **Indent and folder management is established for easily readable code**
 * Design, UX, and content   
   **Tailwind and TypeScript is used for the design of the website**
-  Resources:
+  Resources:<br>
   https://tailwindui.com/components/marketing/sections/heroes<br>
   https://flowbite.com/<br>
   https://tailwindcomponents.com/
@@ -98,21 +98,28 @@ css-color-switch-dark-mode:
   for better use , it is recommended to use https://app.supabase.com/projects instead of local use.
   
 * New comment creation   
-  **Authorized user can comment on articles**
+  **Authorized user can comment on articles**<br>
   `commentShow.js` page is used to create comments.
   
   Ressources:
     https://dev.to/hoonweedev/build-comments-section-with-nextjs-and-supabase-1o6c
   
 * Resource access control   
-  **RLS is used to limit the access of information from certain users who does not have the**
+  **RLS is used to limit the access of information from certain users who does not have the**<br>
+  for each table we actived the RLS mode and we added the correspondant policy.
   
 * Article modification   
   when clicking on the button `edit` in the article page it will transfer you to the `update` page
   where you can modify the submitted article.
   
 * Article removal   
-  **Only the author of the articles can delete them**
+  when clicking on the button `delete` in the article page it will delete the article.Unfortunaltely, we faced some issues 
+  concerning getting the proper id of the requested article
+  ````
+    .eq('id',data.id)
+  ````
+  
+  however,when we change `data.id`
   
 * Comment modification   
   created a spcefic button for comment modification that reacts for this function:
@@ -121,15 +128,17 @@ css-color-switch-dark-mode:
   another button for comment removal 
   
 * Account settings   
-  **User can modify their profile page**
-  we created the componenet avatar ins
-  
+  **User can modify their profile page**<br>
+  when auth with supabase the user will be taken to a profile page where he could put its data.<br>
+  with the help of the `Account.js` component.
+  (we could visualize it with `components` branch)
 * WYSIWYG integration   
   **User can create content based on WYSIWYG theorem**
-  
+
+
 * Gravatar integration   
-  **User can use their own avatar (profile picture) for other to see**
-  We created a `Avatar.js` component inspired by : https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs
+  **User can use their own avatar (profile picture) for other to see**<br>
+  We created a `Avatar.js` component inspired by : https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs<br>
   after login in will be transferred to the account settings feature with the ability to add an avatar picture personalized for the user.<br>
   
   due to this part:
@@ -145,7 +154,7 @@ css-color-switch-dark-mode:
     />
   ````
 * Light/dark theme   
-  **User can switch between dark and light, the change is persist on the local storage**
+  **User can switch between dark and light, the change is persist on the local storage**<br>
   we used these React functions to enable this feature (use `components` branch to visualise)
 
   
@@ -172,7 +181,7 @@ css-color-switch-dark-mode:
 ````
 
 * Accent color selection   
-  **Created four buttons that defines 4 colors: red yellow,purple,blue in the Layout component page and that allows us to switch color each time**
+  **Created four buttons that defines 4 colors: red yellow,purple,blue in the Layout component page and that allows us to switch color each time**<br>
   we used this react function in `Layout` component to enable it:
   
   ````
