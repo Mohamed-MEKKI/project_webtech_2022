@@ -5,7 +5,7 @@ Welcome to our website, we provide the articles creation and commenting service.
 
 ## Production 
 
-- Vercel URL: 
+- Vercel URL: (we couldn't deploy our app with vercel due to 'run build' error)
 - Supabase project URL: http://localhost:3001/
 ## Usage
 
