@@ -1,88 +1,166 @@
 
 # Blogging application - ECE Webtech project
 
-*presentation, introduction, ...*
+Welcome to our website, we provide the articles creation and commenting service. The platform allow you to make a profile and publish article in your own name for other to see and give their opinions on the matter. 
 
 ## Production 
 
-- Vercel URL: https://...
-- Supabase project URL: https://app.supabase.com/project/...
-
+- Vercel URL: 
+- Supabase project URL: 
 ## Usage
 
-*how to start and use the application, run the tests, ...*
+_how to start and use the application, run the tests, ..._
 
 * Clone this repository, from your local machine:
   ```
-  git clone ...
-  cd ...
+  git clone https://github.com/Mohamed-MEKKI/project_webtech_2022.git
+  cd app
   ```
 * Start the the application
   ```bash
   cd app
   # Install dependencies (use yarn or npm)
   npm install
-  npm run build
-  npm start
+  npm run dev
   ```
 * Start Supabase
   ```bash
   cd supabase
-  docker compose up ...
+  docker-compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up
   ```
 
 ## Authors
 
-*Mohamed MEKKI, mohamed.mekki@edu.ece.fr, ING4 S.I Gr03*
+*Mohamed MEKKI, mohamed.mekki@edu.ece.fr, ING4 S.I Gr03*\n
+*Thanthai UDCHARCHON, thanthai.udcharchon@edu.ece.fr, ING4 S.I Gr03*
 
 ## Tasks
   
 **Project management:**
 
 * Naming convention   
-  *place your graduation and comments*
+  PascalCase is used for components and camelCase is used for pages and variable, the rest (such as asset etc.) is in snake_case
 * Project structure   
-  *place your graduation and comments*
+  app/  
+    compoenents  
+    pages  
+    public  
+    styles  
+    .DockerFile  
+    .eslintrc.json  
+    .gitignore  
+    next.config.js  
+    package-lock.json  
+    package.json  
+    postcss.config.js  
+    tailwind.config.js  
+    tsconfig.json  
+    README.md  
+  supabase/
+  Readme.md
+  licence
 * Git   
-  *place your graduation and comments*
+  **Git is used to keep up with the version from remote and local repository. Conventional commit is used for every commit**
+  used branches for 
+  main:
+    The default branch 
+components:
+    Description of components modifications ,including color switch and Dark mode
+articles:
+    Description of article creation,delete and modify branch
+comments:
+    Description of comments creation,delete and modify branch
+css-color-switch-dark-mode:
+    Description of dark mode and color switching branch
+
 * Code quality   
-  *place your graduation and comments*
+  **Indent and folder management is established for easily readable code**
 * Design, UX, and content   
-  *place your graduation and comments*
+  **Tailwind and TypeScript is used for the design of the website**
 
 **Application development:**
 
 * Home page   
-  *place your graduation and comments*
+  **User is able to access to allowed page via the home page without being registred**
+  he could also find some brief information about  the company pick the page color and 
+  visualize the latest articles.
+  
 * Login and profile page   
-  *place your graduation and comments*
+  **Login/Logout button in the header push you to the Auth component**
 * New articles creation   
-  I set a new page named by 
+  to create an article, the user should get to `artcr.js` page where he could pick the slug,title,message,categories
+  and then submit the article when clicking the button submit.
+  
 * New comment creation   
-  *place your graduation and comments*
+  **Authorized user can comment on articles**
+  
 * Resource access control   
-  *place your graduation and comments*
+  **RLS is used to limit the access of information from certain users who does not have the**
+  
 * Article modification   
-  *place your graduation and comments*
+  when clicking on the button `edit` in the article page it will transfer you to the `update` page
+  where you can modify the submitted article.
+  
 * Article removal   
-  added a 
+  **Only the author of the articles can delete them**
+  
 * Comment modification   
-  *place your graduation and comments*
+  created a spcefic button for comment modification that reacts for this function:
+  
 * Comment removal   
-  *place your graduation and comments*
+  another button for comment removal 
+  
 * Account settings   
-  *place your graduation and comments*
+  **User can modify their profile page**
+  we created the componenet avatar ins
+  
 * WYSIWYG integration   
-  *place your graduation and comments*
+  **User can create content based on WYSIWYG theorem**
+  
 * Gravatar integration   
-  *place your graduation and comments*
+  **User can use their own avatar (profile picture) for other to see**
+  after login in will be transferred to 
+  
 * Light/dark theme   
-  *place your graduation and comments*
+  **User can switch between dark and light, the change is persist on the local storage**
+  we used these React functions to enable this feature (use `components` branch to visualise)
+
+  
+````
+  useEffect(() => {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      setTheme('dark');
+    }
+    else {
+      setTheme('light');
+    }
+  }, [])
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } 
+    else{
+      document.documentElement.classList.remove("dark")
+    }
+  }, [theme]);
+  const handleThemeSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+````
+
 * Accent color selection   
-  Created four buttons that defines 4 colors: red,yellow,purple,blue in the Layout component page
-  and that allows us to switch color each time
+  **Created four buttons that defines 4 colors: red yellow,purple,blue in the Layout component page and that allows us to switch color each time**
+  we used this react function in `Layout` component to enable it:
+  
+  ````
+   const [color, setColor] = useState('white');
+  const handleColorChange = (event) => {
+    setColor(event.target.value);
+  }
+  
+  ````
 
 ## Bonus
 
 * DockerFile and Dockerignore  
-  *place your graduation and comments*
+  **Docker is used to monitor the health of the website**
