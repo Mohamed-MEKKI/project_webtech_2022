@@ -81,33 +81,84 @@ css-color-switch-dark-mode:
 **Application development:**
 
 * Home page   
-  **User is able to access to allowed page via the home page**
+  **User is able to access to allowed page via the home page without being registred**
+  he could also find some brief information about  the company pick the page color and 
+  visualize the latest articles.
+  
 * Login and profile page   
   **Login/Logout button in the header push you to the Auth component**
 * New articles creation   
-  **Authorized user can create a new article** 
+  to create an article, the user should get to `artcr.js` page where he could pick the slug,title,message,categories
+  and then submit the article when clicking the button submit.
+  
 * New comment creation   
   **Authorized user can comment on articles**
+  
 * Resource access control   
   **RLS is used to limit the access of information from certain users who does not have the**
+  
 * Article modification   
-  **Only the author of the articles can edit them**
+  when clicking on the button `edit` in the article page it will transfer you to the `update` page
+  where you can modify the submitted article.
+  
 * Article removal   
   **Only the author of the articles can delete them**
+  
 * Comment modification   
-  **Only the author of the comments can edit them**
+  created a spcefic button for comment modification that reacts for this function:
+  
 * Comment removal   
-  **Only the author of the comment can delete them**
+  another button for comment removal 
+  
 * Account settings   
   **User can modify their profile page**
+  we created the componenet avatar ins
+  
 * WYSIWYG integration   
   **User can create content based on WYSIWYG theorem**
+  
 * Gravatar integration   
   **User can use their own avatar (profile picture) for other to see**
+  after login in will be transferred to 
+  
 * Light/dark theme   
   **User can switch between dark and light, the change is persist on the local storage**
+  we used these React functions to enable this feature (use `components` branch to visualise)
+
+  
+````
+  useEffect(() => {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      setTheme('dark');
+    }
+    else {
+      setTheme('light');
+    }
+  }, [])
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } 
+    else{
+      document.documentElement.classList.remove("dark")
+    }
+  }, [theme]);
+  const handleThemeSwitch = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+````
+
 * Accent color selection   
   **Created four buttons that defines 4 colors: red yellow,purple,blue in the Layout component page and that allows us to switch color each time**
+  we used this react function in `Layout` component to enable it:
+  
+  ````
+   const [color, setColor] = useState('white');
+  const handleColorChange = (event) => {
+    setColor(event.target.value);
+  }
+  
+  ````
 
 ## Bonus
 
