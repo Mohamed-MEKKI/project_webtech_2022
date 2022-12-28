@@ -32,11 +32,10 @@ export default function Articles({
   }
   // deleting articles
   const makeDelete = async () => {
-    const{id}=useParams();
     const { error,data } = await supabase
             .from('articles')
             .delete()
-            .eq('id',params.id)
+            .eq('id',data.id)
    if (error){
      console.log(error)
    }
