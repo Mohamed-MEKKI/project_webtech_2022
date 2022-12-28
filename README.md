@@ -57,11 +57,12 @@ _how to start and use the application, run the tests, ..._
     tsconfig.json  
     README.md  
   supabase/
-  Readme.md
+  
+  Readme.md<br>
   licence
 * Git   
   **Git is used to keep up with the version from remote and local repository. Conventional commit is used for every commit**
-  used branches for 
+  used branches :
   main:
     The default branch 
 components:
@@ -77,6 +78,10 @@ css-color-switch-dark-mode:
   **Indent and folder management is established for easily readable code**
 * Design, UX, and content   
   **Tailwind and TypeScript is used for the design of the website**
+  Resources:
+  https://tailwindui.com/components/marketing/sections/heroes<br>
+  https://flowbite.com/<br>
+  https://tailwindcomponents.com/
 
 **Application development:**
 
@@ -89,10 +94,15 @@ css-color-switch-dark-mode:
   **Login/Logout button in the header push you to the Auth component**
 * New articles creation   
   to create an article, the user should get to `artcr.js` page where he could pick the slug,title,message,categories
-  and then submit the article when clicking the button submit.
+  and then submit the article when clicking the button submit.<br>
+  for better use , it is recommended to use https://app.supabase.com/projects instead of local use.
   
 * New comment creation   
   **Authorized user can comment on articles**
+  `commentShow.js` page is used to create comments.
+  
+  Ressources:
+    https://dev.to/hoonweedev/build-comments-section-with-nextjs-and-supabase-1o6c
   
 * Resource access control   
   **RLS is used to limit the access of information from certain users who does not have the**
@@ -119,8 +129,21 @@ css-color-switch-dark-mode:
   
 * Gravatar integration   
   **User can use their own avatar (profile picture) for other to see**
-  after login in will be transferred to 
+  We created a `Avatar.js` component inspired by : https://supabase.com/docs/guides/getting-started/tutorials/with-nextjs
+  after login in will be transferred to the account settings feature with the ability to add an avatar picture personalized for the user.<br>
   
+  due to this part:
+  ````
+   <Avatar
+      uid={user.id}
+      url={avatar_url}
+      size={150}
+      onUpload={(url) => {
+        setAvatarUrl(url)
+        updateProfile({ username, website, avatar_url: url })
+      }}
+    />
+  ````
 * Light/dark theme   
   **User can switch between dark and light, the change is persist on the local storage**
   we used these React functions to enable this feature (use `components` branch to visualise)
